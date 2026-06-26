@@ -35,6 +35,11 @@ class RecordLog:
                 log_dir = Path("logs")
                 filepath = log_dir / f"test.{date}.log"
                 file_create_time = os.path.getctime(str(filepath))
+                if filepath.exists():
+                    file_create_time = os.path.getctime(str(filepath))
+                    # 这里写你原本过期删除逻辑
+                else:
+                    return
                 #filepath = log_path + "\\" + file
                 #file_create_time = os.path.getctime(filepath)  # 获取文件创建时间,返回时间戳
                 # dateArray = datetime.datetime.fromtimestamp(file_createtime) #标准时间格式
