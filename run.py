@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import shutil
 import pytest
 import os
@@ -12,7 +13,7 @@ if __name__ == '__main__':
             ['-s', '-v', '--alluredir=./report/temp', './testcase', '--clean-alluredir',
              '--junitxml=./report/results.xml'])
 
-        # 环境信息动态注入
+        # 禄路戮鲁脨脜脧垄露炉脤卢脳垄脠毛
         shutil.copy('./environment.xml', './report/temp')
         os.system(f'allure serve ./report/temp')
 
