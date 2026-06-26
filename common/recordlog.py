@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path # 导入Path
+import datetime
 from conf import setting
 import logging
 import os
@@ -30,6 +31,7 @@ class RecordLog:
         files = os.listdir(log_path)
         for file in files:
             if os.path.splitext(file)[1]:
+                date = datetime.datetime.now().strftime("%Y%m%d")
                 log_dir = Path("logs")
                 filepath = log_dir / f"test.{date}.log"
                 file_create_time = os.path.getctime(str(filepath))
