@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import shutil
 import pytest
 import os
@@ -12,7 +13,7 @@ if __name__ == '__main__':
             ['-s', '-v', '--alluredir=./report/temp', './testcase', '--clean-alluredir',
              '--junitxml=./report/results.xml'])
 
-        # »·¾³ĞÅÏ¢¶¯Ì¬×¢Èë
+        # ç¯å¢ƒä¿¡æ¯åŠ¨æ€æ³¨å…¥
         shutil.copy('./environment.xml', './report/temp')
         os.system(f'allure serve ./report/temp')
 
