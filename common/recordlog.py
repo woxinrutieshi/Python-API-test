@@ -1,5 +1,5 @@
 import sys
-
+from pathlib import Path # 导入Path
 from conf import setting
 import logging
 import os
@@ -30,8 +30,11 @@ class RecordLog:
         files = os.listdir(log_path)
         for file in files:
             if os.path.splitext(file)[1]:
-                filepath = log_path + "\\" + file
-                file_create_time = os.path.getctime(filepath)  # 获取文件创建时间,返回时间戳
+                log_dir = Path("logs")
+                filepath = log_dir / f"test.{date}.log"
+                file_create_time = os.path.getctime(str(filepath))
+                #filepath = log_path + "\\" + file
+                #file_create_time = os.path.getctime(filepath)  # 获取文件创建时间,返回时间戳
                 # dateArray = datetime.datetime.fromtimestamp(file_createtime) #标准时间格式
                 # print(dateArray.strftime("%Y--%m--%d %H:%M:%S"))
                 if file_create_time < before_date:
