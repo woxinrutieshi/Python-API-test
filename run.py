@@ -13,7 +13,7 @@ if __name__ == '__main__':
             ['-s', '-v', '--alluredir=./report/temp', './testcase', '--clean-alluredir',
              '--junitxml=./report/results.xml'])
 
-        # 环境信息动态注入
+        # »·¾³ÐÅÏ¢¶¯Ì¬×¢Èë
         shutil.copy('./environment.xml', './report/temp')
         os.system(f'allure serve ./report/temp')
 
