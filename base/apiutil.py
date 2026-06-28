@@ -75,7 +75,7 @@ class RequestBase:
             allure.attach(api_name, f'请求方法：{method}', allure.attachment_type.TEXT)
             header = self.replace_load(base_info['header'])
             allure.attach(api_name, f'请求头：{header}', allure.attachment_type.TEXT)
-            # yaml字段提取、接口元信息解析，url、method、Header；
+            # 提取接口元信息解析，url、method、Header；
 
             cookie = None
             if base_info.get('cookies') is not None:
@@ -85,15 +85,14 @@ class RequestBase:
             # 请求数据test_case的提取与参数替换，将case_name弹出来。
             case_name = test_case.pop('case_name')
             allure.attach(api_name, f'测试用例名称：{case_name}', allure.attachment_type.TEXT)
-            # 调用replace_load方法yaml数据动态变量替换，将原始的断言表达式替换为全局缓存、上一步接口的真实数据
+            # 调用replace_load方法对数据动态变量替换，将原始的断言表达式替换为全局缓存、上一步接口的真实数据
             val = self.replace_load(test_case.get('validation'))
             test_case['validation'] = val
             validation = eval(test_case.pop('validation'))
-            # 处理断言
 
-            # yaml中全局变量处理
             extract = test_case.pop('extract', None)
             extract_list = test_case.pop('extract_list', None)
+            # 提取用例基本信息
 
             # 循环动态参数替换处理
             for key, value in test_case.items():
@@ -105,7 +104,6 @@ class RequestBase:
                     allure.attach(json.dumps(file), '导入文件')
                     files = {fk: open(fv, mode='rb')}
             # 处理文件上传接口
-
 
             # 解包运算符解包字典，不过不是kwargs，是另一个字典。
             # 组合完整请求并执行
