@@ -15,6 +15,7 @@ def get_testcase_yaml(file):
     testcase_list = []
     try:
         with open(file, 'r', encoding='utf-8') as f:
+            # safe_load方法用于加载yaml文件，返回一个dict
             data = yaml.safe_load(f)
             if len(data) <= 1:
                 yam_data = data[0]
