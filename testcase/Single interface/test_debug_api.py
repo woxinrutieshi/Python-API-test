@@ -39,7 +39,7 @@ class TestUserManager:
     # )
 
 
-    dingRobot.send_dd_msg("测试消息")
+    #dingRobot.send_dd_msg("测试消息")
 
     @allure.story(next(c_id) + "修改用户")
     @pytest.mark.run(order=2)
